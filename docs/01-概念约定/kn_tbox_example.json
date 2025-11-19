@@ -1,0 +1,435 @@
+{
+    "network_info": {
+        "id": "chemical-graph",
+        "network_name": "化工领域知识网络",
+        "comment": "化工领域知识网络描述信息，描述化工领域知识网络的相关信息",
+        "object_types_count": 20,
+        "relation_types_count": 30
+    },
+    "object_types": [
+        {
+            "id": "enterprise",
+            "name": "企业",
+            "tags": [
+                "企业信息",
+                "厂家"
+            ],
+            "comment": "企业，厂家等相关信息，包含企业名称、地址、联系电话、邮箱等，如企业A、企业B等",
+            "data_properties": [
+                {
+                    "name": "name",
+                    "display_name": "企业名称",
+                    "type": "string",
+                    "comment": "企业名称，如企业A、企业B等"
+                },
+                {
+                    "name": "address",
+                    "display_name": "注册地址",
+                    "type": "string",
+                    "comment": "企业注册地址，如中国北京、中国上海等"
+                },
+                {
+                    "name": "brirf_info",
+                    "display_name": "简介",
+                    "type": "string",
+                    "comment": "企业简介，如企业A是一家专业生产化学品的企业，企业B是一家专业销售化学品的企业等"
+                }
+            ]
+        },
+        {
+            "id": "park",
+            "name": "园区",
+            "tags": [
+                "园区信息"
+            ],
+            "comment": "园区，包含园区名称、地址、联系电话、邮箱等，如园区A、园区B等",
+            "data_properties": [
+                {
+                    "name": "name",
+                    "display_name": "园区名称",
+                    "type": "string",
+                    "comment": "园区名称，如园区A、园区B等"
+                },
+                {
+                    "name": "address",
+                    "display_name": "注册地址",
+                    "type": "string",
+                    "comment": "园区注册地址，如中国北京、中国上海等"
+                }
+            ]
+        },
+        {
+            "id": "patent",
+            "name": "专利",
+            "tags": [
+                "知识产权",
+                "专利"
+            ],
+            "comment": "专利相关信息，包含专利号、名称、申请日期、授权日期、状态、分类等",
+            "data_properties": [
+                {
+                    "name": "number",
+                    "display_name": "专利号",
+                    "type": "string",
+                    "comment": "专利号，如 CN1234567"
+                },
+                {
+                    "name": "title",
+                    "display_name": "专利名称",
+                    "type": "string",
+                    "comment": "专利标题"
+                },
+                {
+                    "name": "application_date",
+                    "display_name": "申请日期",
+                    "type": "date",
+                    "comment": "专利申请日期"
+                },
+                {
+                    "name": "grant_date",
+                    "display_name": "授权日期",
+                    "type": "date",
+                    "comment": "专利授权日期"
+                },
+                {
+                    "name": "status",
+                    "display_name": "状态",
+                    "type": "string",
+                    "comment": "专利状态，如公开、授权、失效等"
+                },
+                {
+                    "name": "ipc",
+                    "display_name": "国际分类(IPC)",
+                    "type": "string",
+                    "comment": "国际专利分类号，如 C07D"
+                },
+                {
+                    "name": "abstract",
+                    "display_name": "摘要",
+                    "type": "string",
+                    "comment": "专利摘要"
+                }
+            ]
+        },
+        {
+            "id": "material",
+            "name": "物质物料",
+            "tags": [
+                "原料",
+                "化学品",
+                "物料"
+            ],
+            "comment": "物质或物料相关信息，包含名称、CAS号、化学式、规格、纯度、危险性分类等",
+            "data_properties": [
+                {
+                    "name": "name",
+                    "display_name": "物料名称",
+                    "type": "string",
+                    "comment": "物质或物料名称，如乙醇"
+                },
+                {
+                    "name": "cas_no",
+                    "display_name": "CAS号",
+                    "type": "string",
+                    "comment": "CAS登记号，如 64-17-5"
+                },
+                {
+                    "name": "formula",
+                    "display_name": "化学式",
+                    "type": "string",
+                    "comment": "分子式，如 C2H6O"
+                },
+                {
+                    "name": "specification",
+                    "display_name": "规格",
+                    "type": "string",
+                    "comment": "规格型号，如 99.5%工业级"
+                },
+                {
+                    "name": "purity",
+                    "display_name": "纯度",
+                    "type": "string",
+                    "comment": "纯度，如 99.9%"
+                },
+                {
+                    "name": "hazard_class",
+                    "display_name": "危化品类别",
+                    "type": "string",
+                    "comment": "危险性分类，如 易燃液体"
+                },
+                {
+                    "name": "storage_requirements",
+                    "display_name": "储存要求",
+                    "type": "string",
+                    "comment": "储存条件要求，如 阴凉、密闭、远离火源"
+                },
+                {
+                    "name": "brirf_info",
+                    "display_name": "简介",
+                    "type": "string",
+                    "comment": "物料简介或备注"
+                }
+            ]
+        },
+        {
+            "id": "reaction",
+            "name": "化学反应",
+            "tags": [
+                "反应",
+                "化学过程"
+            ],
+            "comment": "化学反应相关信息，包括反应方程式、条件、类型等",
+            "data_properties": [
+                {
+                    "name": "name",
+                    "display_name": "反应名称",
+                    "type": "string",
+                    "comment": "反应名称，如酯化反应"
+                },
+                {
+                    "name": "equation",
+                    "display_name": "反应方程式",
+                    "type": "string",
+                    "comment": "化学反应方程式，如 A + B -> C"
+                },
+                {
+                    "name": "conditions",
+                    "display_name": "反应条件",
+                    "type": "string",
+                    "comment": "温度、压力、催化剂等条件"
+                },
+                {
+                    "name": "type",
+                    "display_name": "反应类型",
+                    "type": "string",
+                    "comment": "反应类型，如加成、取代、氧化还原等"
+                },
+                {
+                    "name": "description",
+                    "display_name": "描述",
+                    "type": "string",
+                    "comment": "反应描述、注意事项等"
+                }
+            ]
+        },
+        {
+            "id": "process",
+            "name": "工艺",
+            "tags": [
+                "工艺",
+                "生产流程"
+            ],
+            "comment": "生产工艺或技术流程相关信息，包括流程、设备、产能、安全注意事项等",
+            "data_properties": [
+                {
+                    "name": "name",
+                    "display_name": "工艺名称",
+                    "type": "string",
+                    "comment": "工艺或流程名称"
+                },
+                {
+                    "name": "flow",
+                    "display_name": "工艺流程",
+                    "type": "string",
+                    "comment": "流程描述，步骤说明"
+                },
+                {
+                    "name": "equipment",
+                    "display_name": "关键设备",
+                    "type": "string",
+                    "comment": "涉及的设备，如反应釜、精馏塔等"
+                },
+                {
+                    "name": "capacity",
+                    "display_name": "产能",
+                    "type": "string",
+                    "comment": "产能或处理能力，如 10 t/d"
+                },
+                {
+                    "name": "standard",
+                    "display_name": "执行标准",
+                    "type": "string",
+                    "comment": "遵循的标准或规范，如 GB/T ..."
+                },
+                {
+                    "name": "safety_notes",
+                    "display_name": "安全注意事项",
+                    "type": "string",
+                    "comment": "安全要点和管控措施"
+                }
+            ]
+        }
+    ],
+    "relation_types": [
+        {
+            "id": "enterprise_2_park",
+            "name": "坐落在",
+            "tags": [
+                "位于"
+            ],
+            "comment": "企业坐落在园区，如企业A坐落在园区A、企业B坐落在园区B等",
+            "source_object_type_id": "enterprise",
+            "target_object_type_id": "park",
+            "source_object_type": {
+                "id": "enterprise",
+                "name": "企业"
+            },
+            "target_object_type": {
+                "id": "park",
+                "name": "园区"
+            }
+        },
+        {
+            "id": "enterprise_2_patent",
+            "name": "拥有专利",
+            "tags": [
+                "知识产权",
+                "拥有"
+            ],
+            "comment": "企业拥有的专利，如企业A拥有专利P001",
+            "source_object_type_id": "enterprise",
+            "target_object_type_id": "patent",
+            "source_object_type": {
+                "id": "enterprise",
+                "name": "企业"
+            },
+            "target_object_type": {
+                "id": "patent",
+                "name": "专利"
+            }
+        },
+        {
+            "id": "enterprise_2_material",
+            "name": "生产物料",
+            "tags": [
+                "生产",
+                "制造"
+            ],
+            "comment": "企业生产的物质或物料，如企业A生产乙醇",
+            "source_object_type_id": "enterprise",
+            "target_object_type_id": "material",
+            "source_object_type": {
+                "id": "enterprise",
+                "name": "企业"
+            },
+            "target_object_type": {
+                "id": "material",
+                "name": "物质物料"
+            }
+        },
+        {
+            "id": "material_2_reaction",
+            "name": "参与反应",
+            "tags": [
+                "反应参与",
+                "反应物"
+            ],
+            "comment": "物质作为反应物、催化剂或溶剂参与某化学反应",
+            "source_object_type_id": "material",
+            "target_object_type_id": "reaction",
+            "source_object_type": {
+                "id": "material",
+                "name": "物质物料"
+            },
+            "target_object_type": {
+                "id": "reaction",
+                "name": "化学反应"
+            }
+        },
+        {
+            "id": "reaction_2_material",
+            "name": "产物",
+            "tags": [
+                "生成物",
+                "产出"
+            ],
+            "comment": "化学反应生成的产物物质物料",
+            "source_object_type_id": "reaction",
+            "target_object_type_id": "material",
+            "source_object_type": {
+                "id": "reaction",
+                "name": "化学反应"
+            },
+            "target_object_type": {
+                "id": "material",
+                "name": "物质物料"
+            }
+        },
+        {
+            "id": "material_2_process",
+            "name": "参与消耗",
+            "tags": [
+                "消耗",
+                "用料"
+            ],
+            "comment": "某工艺在生产过程中消耗的物质物料",
+            "source_object_type_id": "material",
+            "target_object_type_id": "process",
+            "source_object_type": {
+                "id": "material",
+                "name": "物质物料"
+            },
+            "target_object_type": {
+                "id": "process",
+                "name": "工艺"
+            }
+        },
+        {
+            "id": "enterprise_2_process",
+            "name": "实施工艺",
+            "tags": [
+                "实施",
+                "生产工艺"
+            ],
+            "comment": "企业实施或运行的工艺流程",
+            "source_object_type_id": "enterprise",
+            "target_object_type_id": "process",
+            "source_object_type": {
+                "id": "enterprise",
+                "name": "企业"
+            },
+            "target_object_type": {
+                "id": "process",
+                "name": "工艺"
+            }
+        },
+        {
+            "id": "process_2_reaction",
+            "name": "包含反应步骤",
+            "tags": [
+                "工艺-反应",
+                "步骤"
+            ],
+            "comment": "某工艺流程包含的化学反应步骤",
+            "source_object_type_id": "process",
+            "target_object_type_id": "reaction",
+            "source_object_type": {
+                "id": "process",
+                "name": "工艺"
+            },
+            "target_object_type": {
+                "id": "reaction",
+                "name": "化学反应"
+            }
+        },
+        {
+            "id": "patent_2_material",
+            "name": "涉及物料",
+            "tags": [
+                "专利-物料",
+                "提及"
+            ],
+            "comment": "专利文献中涉及或提及的物质物料",
+            "source_object_type_id": "patent",
+            "target_object_type_id": "material",
+            "source_object_type": {
+                "id": "patent",
+                "name": "专利"
+            },
+            "target_object_type": {
+                "id": "material",
+                "name": "物质物料"
+            }
+        }
+    ]
+}

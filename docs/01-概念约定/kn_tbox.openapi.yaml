@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: kn_tbox Schema（OpenAPI 3.0）
+  version: v1.0
+  description: |
+    以 `01-概念约定/kn_tbox.json` 的结构为准，定义 TBox 文档的 OpenAPI Schema。
+    本文件用于跨团队/工具对齐数据结构与示例，无需接口，仅提供组件模型。
+paths: {}
+components:
+  schemas:
+    TBoxDocument:
+      type: object
+      required: [network_info, object_types, relation_types]
+      properties:
+        network_info:
+          $ref: '#/components/schemas/NetworkInfo'
+        object_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectType'
+        relation_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelationType'
+      example:
+        network_info:
+          id: custom_kn_id
+          network_name: 业务知识网络
+          comment: 业务知识网络描述信息，描述业务知识网络的相关信息
+          object_types_count: 20
+          relation_types_count: 30
+        object_types:
+          - id: 自定义对象类ID
+            name: 对象类名称
+            tags: [标签1, 标签2]
+            comment: 业务知识对象类型1描述信息，描述业务知识对象类型1的相关信息
+            data_properties:
+              - name: "属性名称,表示该对象类的属性名"
+                display_name: 属性的显示名称
+                type: 属性数据类型
+                comment: 属性的描述信息，如企业名称、地址、联系电话、邮箱等
+        relation_types:
+          - id: 自定义关系类ID
+            name: 关系类名称
+            tags: [标签1, 标签2]
+            comment: 业务知识关系类型1描述信息，描述业务知识关系类型1的相关信息
+            source_object_type:
+              id: 自定义对象类ID
+              name: 对象类名称
+            target_object_type:
+              id: 自定义对象类ID
+              name: 对象类名称
+
+    NetworkInfo:
+      type: object
+      required: [id, network_name]
+      properties:
+        id:
+          type: string
+          description: 网络ID
+        network_name:
+          type: string
+          description: 网络名称
+        comment:
+          type: string
+        object_types_count:
+          type: integer
+        relation_types_count:
+          type: integer
+
+    DataProperty:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          description: 属性标识
+        display_name:
+          type: string
+        type:
+          type: string
+        comment:
+          type: string
+        aliases:
+          type: array
+          items:
+            type: string
+
+    ObjectType:
+      type: object
+      required: [id, name, data_properties]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        comment:
+          type: string
+        data_properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataProperty'
+
+    RelationEndpointRef:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+
+    RelationType:
+      type: object
+      required: [id, name, source_object_type, target_object_type]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        aliases:
+          type: array
+          items:
+            type: string
+        comment:
+          type: string
+        source_object_type:
+          $ref: '#/components/schemas/RelationEndpointRef'
+        target_object_type:
+          $ref: '#/components/schemas/RelationEndpointRef'

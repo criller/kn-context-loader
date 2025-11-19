@@ -1,0 +1,74 @@
+{
+    "nodes": [
+        {
+            "object_id": "企业A",
+            "object_type": "enterprise",
+            "properties": {
+                "name": "企业A",
+                "location": "北京"
+            }
+        },
+        {
+            "object_id": "物料1",
+            "object_type": "material",
+            "properties": {
+                "name": "物料1",
+                "cas_number": "123456-78-9"
+            }
+        },
+        {
+            "object_id": "物料2",
+            "object_type": "material",
+            "properties": {
+                "name": "物料2",
+                "cas_number": "987654-32-1"
+            }
+        },
+        {
+            "object_id": "反应I",
+            "object_type": "reaction",
+            "properties": {
+                "name": "反应I",
+                "formula": "A + B = C"
+            }
+        },
+        {
+            "object_id": "反应II",
+            "object_type": "reaction",
+            "properties": {
+                "name": "反应II",
+                "formula": "B + C = D"
+            }
+        }
+    ],
+    "paths": [
+        {
+            "edges": [
+                {
+                    "releation_name": "生产物料",
+                    "source_object_id": "企业A",
+                    "target_object_id": "物料1"
+                },
+                {
+                    "releation_name": "参与反应",
+                    "source_object_id": "物料1",
+                    "target_object_id": "反应I"
+                }
+            ]
+        },
+        {
+            "edges": [
+                {
+                    "releation_name": "生产物料",
+                    "source_object_id": "企业A",
+                    "target_object_id": "物料2"
+                },
+                {
+                    "releation_name": "参与反应",
+                    "source_object_id": "物料2",
+                    "target_object_id": "反应II"
+                }
+            ]
+        }
+    ]
+}
