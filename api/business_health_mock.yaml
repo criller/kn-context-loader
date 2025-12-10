@@ -1,0 +1,71 @@
+openapi: 3.0.2
+info:
+  title: 企业经营健康度 API
+  version: 1.0.0
+  description: 用于查询企业经营健康度评分的 API。
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/company/{company_id}/health-score:
+    get:
+      summary: 获取企业经营健康度评分
+      description: 返回指定企业的健康度评分、评级及各维度的详细分析。
+      parameters:
+        - name: company_id
+          in: path
+          required: true
+          description: 企业唯一标识符。
+          schema:
+            type: string
+            example: "company_12345"
+      responses:
+        '200':
+          description: 请求成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessHealthResponse'
+        '404':
+          description: 未找到该企业
+        '500':
+          description: 服务器内部错误
+
+components:
+  schemas:
+    BusinessHealthResponse:
+      type: object
+      properties:
+        company_id:
+          type: string
+          description: 输入的企业 ID。
+        overall_score:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: 综合健康度评分 (0-100)。
+        rating:
+          type: string
+          enum: [A+, A, B, C, D]
+          description: 基于评分的评级等级。
+        update_time:
+          type: integer
+          format: int64
+          description: 评分计算时的 Unix 时间戳。
+        suggestion:
+          type: string
+          description: 基于评分给出的业务建议。
+        dimensions:
+          type: object
+          properties:
+            scale_score:
+              type: integer
+              description: 规模评分（基于产品数量和市场覆盖率）。
+            innovation_score:
+              type: integer
+              description: 创新评分（基于新药获批和研发活动）。
+            compliance_score:
+              type: integer
+              description: 合规评分（基于数据完整性和监管合规情况）。
+            stability_score:
+              type: integer
+              description: 稳健评分（基于产品多样性和抗风险能力）。
